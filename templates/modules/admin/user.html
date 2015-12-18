@@ -1,0 +1,17 @@
+ <ul>
+    {% for user in users %}
+      <li>
+      <div class="title">{{ escape(user.username) }}</div> 
+      {% if current_user.username == 'firezyz'%}
+      <!--<a href="/admin?opObj='user'&opObjId={{user.id}}">delete</a>-->
+      <form id="_form" method="post" action="/admin">
+            {% raw xsrf_form_html() %}
+            <input type="hidden" name="opObj" value="user" /> 
+            <input type="hidden" name="opObjId" value={{user.id}} /> 
+            <input type="hidden" name="operate" value="delete"/>
+            <a onclick="document.getElementById('_form').submit();">delete</a>
+      </form>
+      {%end%}
+      </li>
+    {% end %}
+  </ul>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<form action="/auth/register" method="post">
+    用户名  <input type="text" name="username"  id="username">      
+    邮 件  <input type="text" name="email" id="email">  
+    密 码  <input type="password" name="password" id="password">  
+    {% raw xsrf_form_html() %}
+    <input type="submit" value="登 录" />     
+    <input type="reset" value="重 置"/>      
+</form>
+{% end %}
